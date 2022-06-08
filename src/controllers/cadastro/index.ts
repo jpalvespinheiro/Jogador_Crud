@@ -19,10 +19,6 @@ export class cadastroController {
       return undefined;
     }
 
-   // erro de lógica
-    //pensa comigo, se posicao está vazio pq vou buscar no banco? se está vazio já tenho que retornar ele como undefined não tem pq ir consultar
-   // outro erro novamente verificando undefined === ""
-    //entendeu? agora sim , deixa comentado essa explicação que depois eu anoto 
     if (posicao === "" || undefined === "") { 
       if (await cadastroModel.existePosicao(time, posicao)) return undefined;
     }
@@ -41,7 +37,8 @@ export class cadastroController {
       return undefined;
     }
 
-    if (idade < 16) {
+    if (idade < 16) {           
+      
       return undefined;
     }
 
