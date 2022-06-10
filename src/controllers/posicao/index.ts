@@ -32,4 +32,17 @@ export class PosicaoController {
 
     return await posicaoModel.update(id, nome);
   }
+
+  public async delete(id: number) {
+    const posicaoModel = new PosicaoModel();
+
+    if (!id) {
+      return {
+        success: false,
+        message: "para fazer update, o id é obrigatório.",
+      };
+    }
+
+    return await posicaoModel.delete(id);
+  }
 }

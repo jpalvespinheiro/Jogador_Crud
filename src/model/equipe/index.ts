@@ -27,22 +27,20 @@ export class EquipeModel {
       console.log((er as Error).message);
       return { success: false, message: (er as Error).message };
     }
-
   }
 
   public async delete(id: number) {
     try {
       const retorno = await db.query<TEquipe>(
-        "DELETE FROM equipes WHERE id = $1 RETURNING*",
+        "DELETE FROM equipes WHERE id = $1 RETURNING *",
         [id]
       );
       return retorno.rows[0];
     } catch (er) {
       console.log((er as Error).message);
       return { success: false, message: (er as Error).message };
-      
     }
-    }
+  }
 
   public async ExistByEquipe(nome: string) {
     try {

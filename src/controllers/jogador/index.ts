@@ -39,6 +39,19 @@ export class JogadorController {
     }
   }
 
+  public async delete(id: number) {
+    const jogadorModel = new JogadorModel();
+
+    if (!id) {
+      return {
+        success: false,
+        message: "para fazer update, o id é obrigatório.",
+      };
+    }
+      return await jogadorModel.delete(id);
+    
+  }
+
   private async isValid(jogador: JogadorDTO, jogadorModel: JogadorModel) {
     if (!cpfValidator.isValid(jogador.cpf)) {
       return { success: false, message: "cpf inválido" };

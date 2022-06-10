@@ -35,6 +35,20 @@ EquipeRouter.put("/", async (request, response) => {
   return response.status(200).send(retorno);
 });
 
+EquipeRouter.delete("/", async (request, response) => {
+
+  const { id } = request.body;
+  const equipeCtrl = new EquipeController();
+
+  // as validções devem ficar aqui nesse createCadastro
+  const retorno = await equipeCtrl.delete(id);
+
+  if (isRetornoDefault(retorno)) {
+    return response.status(400).json(retorno)
+  }
+
+  return response.status(200).send(retorno);
+});
 
 
 EquipeRouter.get("/", async (request, response) => {

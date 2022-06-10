@@ -33,6 +33,21 @@ JogadorRouter.put("/", async (request, response) => {
   return response.status(200).send(retorno);
 });
 
+JogadorRouter.delete("/", async (request, response) => {
+
+  const { id } = request.body;
+  const JogadorCtrl = new JogadorController();
+
+  // as validções devem ficar aqui nesse createCadastro
+  const retorno = await JogadorCtrl.delete(id);
+
+  if (isRetornoDefault(retorno)) {
+    return response.status(400).json(retorno)
+  }
+
+  return response.status(200).send(retorno);
+});
+
 JogadorRouter.get("/", async (request, response) => {
   response.status(200).json({ message: "tudo funfando!" });
   return;

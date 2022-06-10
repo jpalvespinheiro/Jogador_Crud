@@ -27,8 +27,23 @@ export class PosicaoModel {
       console.log((er as Error).message);
       return { success: false, message: (er as Error).message };
     }
-
+    
   }
+
+  public async delete(id: number) {
+    try {
+      const retorno = await db.query<Tposicao>(
+        "DELETE FROM posicao WHERE id = $1 RETURNING *",
+        [ id ]
+      );
+      return retorno.rows[0];
+    } catch (er) {
+      console.log((er as Error).message);
+      return { success: false, message: (er as Error).message };
+    }
+    
+  }
+
 
   public async ExistePosicao(nome: string) {
     try {

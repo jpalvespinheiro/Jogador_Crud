@@ -33,4 +33,17 @@ export class EquipeController {
 
     return await equipeModel.update(id, nome);
   }
+
+  public async delete(id: number) {
+    const equipeModel = new EquipeModel();
+
+    if (!id) {
+      return {
+        success: false,
+        message: "para fazer update, o id é obrigatório.",
+      };
+    }
+
+    return await equipeModel.delete(id);
+  }
 }

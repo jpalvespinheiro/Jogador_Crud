@@ -40,7 +40,7 @@ export class JogadorModel {
         "DELETE FROM jogador WHERE id = $1 RETURNING *",
         [id]
       );
-      return !!retorno.rows[0];
+      return retorno.rows[0];
     } catch (er) {
       console.log((er as Error).message);
       return { success: false, message: (er as Error).message };
